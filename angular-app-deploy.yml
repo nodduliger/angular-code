@@ -1,4 +1,5 @@
-- hosts: node-server
+---
+- hosts: all
   become: yes
   tasks:
     - name: copy built files to deploy-server
