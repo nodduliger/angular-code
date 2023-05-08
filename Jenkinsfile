@@ -22,7 +22,7 @@ pipeline{
             steps {
             echo "deploying the application using ansible-playbook"
 	sh '''
-	ansible-playbook -i inventory angular-app-deploy.yml --key-file /var/lib/jenkins/id_rsa
+	ansible-playbook angular-app-deploy.yml --key-file /var/lib/jenkins/id_rsa
 	'''
 
             }
