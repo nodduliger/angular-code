@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "myliger"
+    S3_BUCKET: "mynoddu"
 phases:
   install:
     runtime-versions:
