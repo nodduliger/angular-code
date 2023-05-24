@@ -22,7 +22,7 @@ phases:
       - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
       - echo "Build completed on date"
       - aws s3 website s3://${S3_BUCKET} --index-document index.html 
-      - aws cloudfront create-invalidation --distribution-id E3L6K7CYQJ7RD8 --paths '/*'
+      - aws cloudfront create-invalidation --distribution-id E3GJ5I5L4TT6GM --paths '/*'
 artifacts:
   files:
       - '**/*'
