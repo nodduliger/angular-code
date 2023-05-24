@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "angular-site-first"
+    S3_BUCKET: "myliger"
 phases:
   install:
     runtime-versions:
@@ -9,16 +9,20 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
-      - npm install --legacy-peer-deps
+      - npm install
+      #- npm install --legacy-peer-deps
       - npm install -g @angular/cli
   build:
     commands:
-      - echo Build started on `date`
-      - ng build --configuration production --aot
+      - echo Build started on date
+      - ng build 
+      #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync dist s3://${S3_BUCKET}
-      - echo Build completed on `date`
+      - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
+      - echo "Build completed on date"
+      - aws s3 website s3://${S3_BUCKET} --index-document index.html 
+      - aws cloudfront create-invalidation --distribution-id E3L6K7CYQJ7RD8 --paths '/*'
 artifacts:
   files:
       - '**/*'
